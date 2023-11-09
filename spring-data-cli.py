@@ -3,7 +3,7 @@ import requests, json, sys, os
 username = ''
 password = ''
 account_id = ''
-VIN = ''
+vin = ''
 
 if os.path.exists('config.json'):
     with open('config.json', 'r') as fp:
@@ -11,7 +11,7 @@ if os.path.exists('config.json'):
         username = _config['username']
         password = _config['password']
         account_id = _config['account_id']
-        VIN = _config['VIN']
+        vin = _config['VIN']
 
 _config_url = 'https://renault-wrd-prod-1-euw1-myrapp-one.s3-eu-west-1.amazonaws.com/configuration/android/config_ro_RO.json'
 
@@ -32,7 +32,7 @@ _login_creds = None
 
 def get_vehicle_data(target_url):
     ret = requests.get(target_url.format(_login_data['servers']['wiredProd']['target'],
-                                  account_id, VIN),
+                                  account_id, vin),
                     headers={
                         'content-type': 'application/json',
                         'apikey': 'YjkKtHmGfaceeuExUDKGxrLZGGvtVS0J',
